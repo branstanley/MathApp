@@ -1,0 +1,165 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.outsider.mathapp.triangle">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Calculating A Triangle&apos;s Missing Bits\nInput one side and another measurement"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="A: "
+        android:id="@+id/textView8"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/triA"
+        android:width="40dp"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_toRightOf="@+id/textView8"
+        android:layout_toEndOf="@+id/textView8"
+        android:numeric="decimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="B: "
+        android:id="@+id/textView9"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_toRightOf="@+id/triA"
+        android:layout_toEndOf="@+id/triA" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/triB"
+        android:width="40dp"
+        android:layout_alignTop="@+id/triA"
+        android:layout_toRightOf="@+id/textView9"
+        android:layout_toEndOf="@+id/textView9"
+        android:numeric="decimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="H: "
+        android:id="@+id/textView10"
+        android:layout_alignBottom="@+id/triB"
+        android:layout_toRightOf="@+id/triB"
+        android:layout_toEndOf="@+id/triB" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/triH"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_toRightOf="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10"
+        android:width="40dp"
+        android:numeric="decimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="a: "
+        android:id="@+id/textView11"
+        android:layout_alignBottom="@+id/tria"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tria"
+        android:layout_below="@+id/triA"
+        android:layout_toRightOf="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11"
+        android:width="40dp"
+        android:numeric="decimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="b: "
+        android:id="@+id/textView12"
+        android:layout_alignBottom="@+id/tria"
+        android:layout_alignLeft="@+id/textView9"
+        android:layout_alignStart="@+id/textView9" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trib"
+        android:layout_alignBottom="@+id/textView12"
+        android:layout_alignLeft="@+id/triB"
+        android:layout_alignStart="@+id/triB"
+        android:width="40dp"
+        android:numeric="decimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="h: 90"
+        android:id="@+id/textView13"
+        android:layout_alignBottom="@+id/textView12"
+        android:layout_toRightOf="@+id/trib"
+        android:layout_toEndOf="@+id/trib" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:id="@+id/triangleCalc"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignTop="@+id/textView10"
+        android:layout_toEndOf="@+id/triH"
+        android:layout_alignBottom="@+id/textView13" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/triangleCalc"
+        android:layout_alignEnd="@+id/triangleCalc"
+        android:src="@drawable/triangle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/triangleOutput"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

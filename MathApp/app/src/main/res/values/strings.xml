@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_quadratic">quadratic</string>
+    <string name="title_activity_basic_arithmetic">basicArithmetic</string>
+    <string name="title_activity_triangle">triangle</string>
 </resources>

@@ -20,6 +20,14 @@
             android:name=".quadratic"
             android:label="@string/title_activity_quadratic" >
         </activity>
+        <activity
+            android:name=".basicArithmetic"
+            android:label="@string/title_activity_basic_arithmetic" >
+        </activity>
+        <activity
+            android:name=".triangle"
+            android:label="@string/title_activity_triangle" >
+        </activity>
     </application>
 
 </manifest>

@@ -48,14 +48,21 @@ public class MainMenu extends AppCompatActivity
     public void onClick(View v) {
         RadioGroup group = (RadioGroup) findViewById(R.id.modeSelection);
         RadioButton selectedButton = (RadioButton) findViewById(group.getCheckedRadioButtonId());
+        Intent intent;
         switch(selectedButton.getId()){
-            case R.id.radioButton:
-                // Open quadratic
-                Intent intent = new Intent(this, quadratic.class);
+            case R.id.basicMath:
+                intent = new Intent(this, basicArithmetic.class);
                 startActivity(intent);
                 break;
-            case R.id.radioButton2:
+            case R.id.quadraticRadioButton:
+                // Open quadratic
+                intent = new Intent(this, quadratic.class);
+                startActivity(intent);
+                break;
+            case R.id.triangleRadioButton:
                 // open triangle
+                intent = new Intent(this, triangle.class);
+                startActivity(intent);
                 break;
         }
     }
