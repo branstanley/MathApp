@@ -64,6 +64,10 @@ public class MainMenu extends AppCompatActivity
                 intent = new Intent(this, triangle.class);
                 startActivity(intent);
                 break;
+            case R.id.geometric:
+                intent = new Intent(this, geometry.class);
+                startActivity(intent);
+                break;
         }
     }
 }

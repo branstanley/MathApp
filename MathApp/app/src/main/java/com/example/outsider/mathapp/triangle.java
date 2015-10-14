@@ -2,6 +2,7 @@ package com.example.outsider.mathapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,10 @@ public class triangle extends AppCompatActivity {
 
         Button calculate = (Button) findViewById(R.id.triangleCalc);
         calculate.setOnClickListener( new listener());
+
+        // We need to use this to allow our output TextView to have a scroll bar
+        // We also need to set android:scrollbars="vertical" in the XML for our GUI
+        ((TextView)findViewById(R.id.triangleOutput)).setMovementMethod(new ScrollingMovementMethod());
     }
 
     @Override
@@ -101,7 +106,7 @@ public class triangle extends AppCompatActivity {
              *   tan = opposite / adjacent
              ********************************************************************************************/
             Double sideA = 0.0, sideB = 0.0, sideH = 0.0, anglea = 0.0, angleb = 0.0;
-
+            output.setText("Calculations:\n");
             if(!checks[0]){
             // in this case we only want to execute this section if checks[0] is false (A has no value)
             // In other words, we need to solve for side A
@@ -111,7 +116,8 @@ public class triangle extends AppCompatActivity {
                     // We have both sides B and H
                     sideB = Double.parseDouble(B.getText().toString()); // Get the value of side B
                     sideH = Double.parseDouble(H.getText().toString()); // Get the value of the hypotenuse
-                    sideA = Math.sqrt( Math.pow(sideH, 2) - Math.pow(sideB, 2)); // We can use pythagorean theorem to get side A
+                    sideA = Math.sqrt(Math.pow(sideH, 2) - Math.pow(sideB, 2)); // We can use pythagorean theorem to get side A
+                    output.setText(output.getText() + "A = √(" + sideH + "^2 - " + sideB + "^2 ) = " + sideA + "\n");
                 }
                 else if(checks[1]){
                     // We have only side B
@@ -121,25 +127,30 @@ public class triangle extends AppCompatActivity {
                         // we have angle a
                         anglea = Double.parseDouble(a.getText().toString()); // Get the value of angle a
                         sideA = sideB * Math.tan(Math.toRadians(anglea));  // A = B * tan(a)
+                        output.setText(output.getText() + "A = " + sideB + " * tan(" + anglea + ") = " + sideA + "\n");
                     }
                     else{
                         // We *must* have angle b if we don't have A, H, or a
                         angleb = Double.parseDouble(b.getText().toString()); // Get the value of angle b
                         sideA = sideB / Math.tan(Math.toRadians(angleb)); // A = B / tan(b)
+                        output.setText(output.getText() + "A = " + sideB + " / tan(" + angleb + ") = " + sideA + "\n");
                     }
                 }
-                else{ // We have only side H
+                else{
+                    // We have only side H
                     sideH = Double.parseDouble(H.getText().toString()); // Get the value of the hypotenuse
 
                     if(checks[3]){
                         // We have angle a
                         anglea = Double.parseDouble(a.getText().toString()); // Get the value of angle a
                         sideA = Math.sin(Math.toRadians(anglea)) / sideH; // A = sin(a) / H
+                        output.setText(output.getText() + "A = sin(" + anglea + ") / " + sideB + " = " + sideA + "\n");
                     }
                     else{
                         // We *must* have angle b if we don't have A, B, or a
                         angleb = Double.parseDouble(b.getText().toString()); // Get the value of angle b
                         sideA = Math.cos(Math.toRadians(angleb)) / sideH; // A = cos(b) / H
+                        output.setText(output.getText() + "A = cos(" + angleb + ") / " + sideB + " = " + sideA + "\n");
                     }
                 }
             }
@@ -153,7 +164,8 @@ public class triangle extends AppCompatActivity {
                 // Side B has no value
                 if(checks[2]){
                     // We have a value for the hypotenuse, and it has already been assigned because of our calculation for A
-                    sideB = Math.sqrt(Math.pow(sideH, 2) - Math.pow(sideA,2 )); // We can use pythagorean theorem to get side A
+                    sideB = Math.sqrt(Math.pow(sideH, 2) - Math.pow(sideA,2 )); // We can use pythagorean theorem to get side B
+                    output.setText(output.getText() + "B = √(" + sideH + "^2 - " + sideA + "^2 ) = " + sideB + "\n");
                 }
                 else{
                     // We need to use one of our angles to calculate for side B
@@ -161,11 +173,13 @@ public class triangle extends AppCompatActivity {
                         // We have angle a
                         anglea = Double.parseDouble(a.getText().toString()); // Get the value of angle a
                         sideB = sideA / Math.tan(Math.toRadians(anglea)); // B = A / tan(a)
+                        output.setText(output.getText() + "B = " + sideA + " / tan(" + anglea + ") = " + sideB + "\n");
                     }
                     else{
                         // We *must* have angle b if we don't have H, or a
                         angleb = Double.parseDouble(b.getText().toString()); // Get the value of angle b
                         sideB = sideA * Math.tan(Math.toRadians(angleb)); // B = A * tan(b)
+                        output.setText(output.getText() + "B = " + sideA + " * tan(" + angleb + ") = " + sideB + "\n");
                     }
                 }
             }
@@ -178,6 +192,7 @@ public class triangle extends AppCompatActivity {
             if(!checks[2]){
                 // We need to calculate our hypotenuse
                 sideH = Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2)); // We can use pythagorean theorem to get the hypotenuse
+                output.setText(output.getText() + "B = √(" + sideA + "^2 + " + sideB + "^2 ) = " + sideH + "\n");
             }
             else{
                 sideH = Double.parseDouble(H.getText().toString()); // Get the value of side H
@@ -191,10 +206,12 @@ public class triangle extends AppCompatActivity {
                     // We have angle b
                     angleb = Double.parseDouble(b.getText().toString()); // Get the value of angle b
                     anglea = 90.0 - angleb; // The angles in a triangle add up to 180, 90 is our right angle, 180 - 90 = 90, so 90 - b = a
+                    output.setText(output.getText() + "a = 180 - 90 - " + angleb + " = " + anglea + "\n");
                 }
                 else{
                     // We don't have angle b
                     anglea = Math.toDegrees(Math.asin(sideA / sideH)); // a = arcsin(A / H)
+                    output.setText(output.getText() + "a = arcsin( " + sideA + " / " + sideH + ") = " + anglea + "\n");
                 }
             }
             else{
@@ -206,13 +223,14 @@ public class triangle extends AppCompatActivity {
             if(!checks[4]){
                 // We don't have angle b
                 angleb = 90.0 - anglea;
+                output.setText(output.getText() + "a = 180 - 90 - " + anglea + " = " + angleb + "\n");
             }
             else{
                 angleb = Double.parseDouble(b.getText().toString()); // Get the value of angle b
             }
             angleb = Math.abs(angleb); //Make sure we have a positive number
 
-            output.setText("A: " + sideA + "\nB: " + sideB + "\nH: " + sideH + "\na: " + anglea + "\nb: " + angleb); //  \n means newline
+            output.setText(output.getText() + "Answers:\n\nA: " + sideA + "\nB: " + sideB + "\nH: " + sideH + "\na: " + anglea + "\nb: " + angleb + "\n"); //  \n means newline
         }
     }
 }
