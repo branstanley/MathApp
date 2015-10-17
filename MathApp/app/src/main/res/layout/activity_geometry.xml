@@ -22,14 +22,14 @@
         android:layout_below="@+id/geometricShape"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/inputs"></LinearLayout>
+        android:id="@+id/geoInputs"></LinearLayout>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Draw Shape And Do Calculations"
+        android:text="Draw Shape "
         android:id="@+id/geometricSubmit"
-        android:layout_below="@+id/inputs"
+        android:layout_below="@+id/geoInputs"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -43,9 +43,21 @@
         android:fillViewport="false" >
 
         <com.example.outsider.mathapp.CanvasView
+            android:id="@+id/geoCanvas"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:minHeight="300dp"/>
 
     </ScrollView>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="91dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginBottom="48dp" />
 </RelativeLayout>
