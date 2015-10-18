@@ -6,19 +6,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * Created by Outsider on 10/5/2015.
  */
 public class CanvasView extends View {
-    private Context context;
-    private Path path;
-    private Bitmap bitmap;
     private Canvas canvas;
     private Paint paint;
 
@@ -29,18 +24,15 @@ public class CanvasView extends View {
         super(c, att);
         setWillNotDraw(false);
 
-        context = c;
-        path = new Path();
-
-        paint = new Paint();
+        paint = new Paint(); // Paint options we use when it comes time to draw one of our shapes
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeJoin(Paint.Join.ROUND);
-        paint.setStrokeWidth(4f);
-        shape = "None";
+        paint.setStrokeWidth(10f);
+        shape = "None"; // So that nothing is drawn, this could have been anything, could have left it blank, or called it null, or chicken, since none of these are one of our options
 
-        invalidate();
+        invalidate(); // Tells the canvas to redraw itself... I don't think I actually need this here, but it doesn't hurt
 
     }
 
@@ -54,8 +46,7 @@ public class CanvasView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh){
         super.onSizeChanged(w, h, oldw, oldh);
 
-        bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        canvas = new Canvas(bitmap);
+        canvas = new Canvas(Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888));
     }
 
     @Override
@@ -63,12 +54,12 @@ public class CanvasView extends View {
         //canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         switch(shape) {
             case "Rectangle":
-                canvas.drawRect(10, 10, (float)(50 * width), (float)(50 * height), paint);
+                canvas.drawRect(10, 10, (float)(50 * width), (float)(50 * height), paint); // x, y, width, height, paint we set above
                 break;
             case "Ellipse":
                 canvas.drawOval(new RectF(10, 10, (float)(50 * width), (float)(50 * height)), paint);
                 break;
-            case "Triangle":
+            case "Triangle":  // There is no built in triangle drawing tool, so we make our own using a path
                 Path path = new Path();
                 path.moveTo(10,10);
                 path.lineTo(10, (float)(50 * height));

@@ -19,9 +19,9 @@ public class basicArithmetic extends AppCompatActivity {
         setContentView(R.layout.activity_basic_arithmetic);
 
         Spinner arithmeticSelection = (Spinner)findViewById(R.id.arithSelect);
-        String [] options = { "+", "-", "*", "/"};
-        arithmeticSelection.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, options));
-        arithmeticSelection.setSelection(0);
+        String [] options = { "+", "-", "*", "/"}; // An array containing each of the drop down items
+        arithmeticSelection.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, options)); // Add options to dropdown
+        arithmeticSelection.setSelection(0); // Set the first option (+) as our default selected item
 
         setUpOnClickEvent();  // Call the setUpOnClickEvent method
     }

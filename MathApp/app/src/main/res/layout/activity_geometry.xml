@@ -50,14 +50,4 @@
 
     </ScrollView>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="91dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginBottom="48dp" />
 </RelativeLayout>
